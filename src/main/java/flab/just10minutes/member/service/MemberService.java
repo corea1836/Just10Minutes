@@ -1,13 +1,14 @@
 package flab.just10minutes.member.service;
 
 import flab.just10minutes.member.domain.Member;
-import flab.just10minutes.member.dto.AddMemberRequestDto;
+import flab.just10minutes.member.dto.SignUpRequestDto;
 import flab.just10minutes.member.repository.MemberDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.Optional;
+import java.util.function.Consumer;
 
 @Service
 @RequiredArgsConstructor
@@ -15,10 +16,9 @@ public class MemberService{
 
     private final MemberDao memberDao;
 
-    public void saveMember(AddMemberRequestDto addRequest) {
-        Member newMember = AddMemberRequestDto.to(addRequest);
-        checkDuplicateId(newMember.getId());
-        int insertCount = memberDao.save(newMember);
+    public void save(SignUpRequestDto signupDto) {
+        findById(signupDto.getId()).ifPresent(m -> {throw new RuntimeException("already exist id");});
+        int insertCount = memberDao.save(SignUpRequestDto.to(signupDto));
         if (insertCount != 1) {
             throw new IllegalStateException("회원가입 실패");
         }
