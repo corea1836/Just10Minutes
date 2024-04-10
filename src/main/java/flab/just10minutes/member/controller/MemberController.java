@@ -1,9 +1,9 @@
 package flab.just10minutes.member.controller;
 
-import flab.just10minutes.member.domain.Member;
-import flab.just10minutes.member.dto.AddMemberRequest;
-import flab.just10minutes.member.dto.MemberInfoResponse;
+import flab.just10minutes.member.dto.MemberDto;
+import flab.just10minutes.member.dto.SignUpRequestDto;
 import flab.just10minutes.member.service.MemberService;
+import flab.just10minutes.util.EntityToUtil;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,16 +20,16 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping
-    public ResponseEntity<HttpStatus> addMember(@RequestBody @Valid AddMemberRequest addRequest) {
-        memberService.saveMember(addRequest);
+    public ResponseEntity<HttpStatus> signUp(@RequestBody @Valid SignUpRequestDto signUpDto) {
+        memberService.save(signUpDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MemberInfoResponse> getMemberProfile(@PathVariable String id) {
-        Member member = memberService.findMemberById(id);
-        MemberInfoResponse responseMemberInfo = MemberInfoResponse.to(member);
-        return new ResponseEntity<MemberInfoResponse>(responseMemberInfo, HttpStatus.OK);
+    public ResponseEntity<MemberDto> getMemberProfile(@PathVariable String id) {
+        MemberDto memberDto = EntityToUtil.toDto(memberService.findById(id)
+                .orElseThrow(() -> new RuntimeException("not exist member!")));
+        return new ResponseEntity<MemberDto>(memberDto, HttpStatus.OK);
     }
 
 

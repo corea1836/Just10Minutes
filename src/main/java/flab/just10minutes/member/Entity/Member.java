@@ -1,4 +1,4 @@
-package flab.just10minutes.member.domain;
+package flab.just10minutes.member.Entity;
 
 import lombok.*;
 import org.springframework.util.Assert;
@@ -17,7 +17,6 @@ public class Member {
 
     @Builder
     public Member(String id, String password, String name, String address) {
-        Assert.notNull(id, "id must not be null");
         this.id = id;
         this.password = password;
         this.name = name;

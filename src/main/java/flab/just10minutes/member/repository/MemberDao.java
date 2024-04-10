@@ -1,6 +1,6 @@
 package flab.just10minutes.member.repository;
 
-import flab.just10minutes.member.domain.Member;
+import flab.just10minutes.member.Entity.Member;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

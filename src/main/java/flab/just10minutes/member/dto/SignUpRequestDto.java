@@ -1,12 +1,14 @@
 package flab.just10minutes.member.dto;
 
-import flab.just10minutes.member.domain.Member;
+import flab.just10minutes.member.Entity.Member;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class AddMemberRequest {
+@Getter
+public class SignUpRequestDto {
 
 
     private final String id;
@@ -14,7 +16,7 @@ public class AddMemberRequest {
     private final String name;
     private final String address;
 
-    public static Member to(AddMemberRequest addMemberRequest) {
+    public static Member to(SignUpRequestDto addMemberRequest) {
         return Member.builder()
                 .id(addMemberRequest.id)
                 .password(addMemberRequest.password)

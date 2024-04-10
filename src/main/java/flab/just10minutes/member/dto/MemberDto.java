@@ -1,11 +1,11 @@
 package flab.just10minutes.member.dto;
 
-import flab.just10minutes.member.domain.Member;
+import flab.just10minutes.member.Entity.Member;
 import lombok.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MemberInfoResponse {
+public class MemberDto {
 
     private String id;
     private String name;
@@ -13,15 +13,15 @@ public class MemberInfoResponse {
     private Long balance;
 
     @Builder
-    public MemberInfoResponse(String id, String name, String address, Long balance) {
+    public MemberDto(String id, String name, String address, Long balance) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.balance = balance;
     }
 
-    public static MemberInfoResponse to(Member member) {
-        return MemberInfoResponse.builder()
+    public static MemberDto to(Member member) {
+        return MemberDto.builder()
                 .id(member.getId())
                 .name(member.getName())
                 .address(member.getAddress())
