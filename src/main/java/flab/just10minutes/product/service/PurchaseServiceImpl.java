@@ -1,11 +1,10 @@
 package flab.just10minutes.product.service;
 
 import flab.just10minutes.aop.NamedLock;
-import flab.just10minutes.member.domain.Member;
+import flab.just10minutes.member.Entity.Member;
 import flab.just10minutes.member.repository.MemberDao;
 import flab.just10minutes.product.domain.Product;
 import flab.just10minutes.product.domain.Purchase;
-import flab.just10minutes.product.domain.PurchaseHistory;
 import flab.just10minutes.product.domain.SaleStatus;
 import flab.just10minutes.product.dto.PurchaseDto;
 import flab.just10minutes.product.dto.PurchaseRequest;
@@ -14,10 +13,8 @@ import flab.just10minutes.product.repository.PurchaseDao;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ObjectProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

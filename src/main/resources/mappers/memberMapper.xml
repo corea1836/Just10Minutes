@@ -16,7 +16,7 @@
             #{balance})
     </insert>
 
-    <select id="findById" parameterType="java.lang.String" resultType="flab.just10minutes.member.domain.Member">
+    <select id="findById" parameterType="java.lang.String" resultType="flab.just10minutes.member.Entity.Member">
         SELECT
             uniqueId,
             id,
@@ -37,7 +37,7 @@
             MEMBER.id = #{id}
     </select>
 
-    <select id="findByMemberUniqueId" parameterType="java.lang.Long" resultType="flab.just10minutes.member.domain.Member">
+    <select id="findByMemberUniqueId" parameterType="java.lang.Long" resultType="flab.just10minutes.member.Entity.Member">
         SELECT
             uniqueId,
             id,

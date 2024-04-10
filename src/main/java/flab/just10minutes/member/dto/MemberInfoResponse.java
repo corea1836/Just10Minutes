@@ -1,6 +1,6 @@
 package flab.just10minutes.member.dto;
 
-import flab.just10minutes.member.domain.Member;
+import flab.just10minutes.member.Entity.Member;
 import lombok.*;
 
 @Getter

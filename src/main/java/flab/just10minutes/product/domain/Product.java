@@ -1,10 +1,9 @@
 package flab.just10minutes.product.domain;
 
-import flab.just10minutes.member.domain.Member;
+import flab.just10minutes.member.Entity.Member;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
