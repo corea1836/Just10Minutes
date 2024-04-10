@@ -20,7 +20,7 @@ public class MemberService{
         findById(signupDto.getId()).ifPresent(m -> {throw new RuntimeException("already exist id");});
         int insertCount = memberDao.save(SignUpRequestDto.to(signupDto));
         if (insertCount != 1) {
-            throw new IllegalStateException("회원가입 실패");
+            throw new RuntimeException("Fail Command. Please Retry!");
         }
     }
 
@@ -29,10 +29,6 @@ public class MemberService{
         return Optional.ofNullable(memberDao.findById(id));
     }
 
-    public void checkDuplicateId(String id) {
-        Optional.ofNullable(memberDao.findId(id))
-                .ifPresent(action -> {throw new IllegalStateException("해당 아이디가 이미 존재 합니다.");});
-    }
 
 //    public void existMemberValidate(String id, String password) {
 //        Member member = findMemberById(id);
