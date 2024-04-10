@@ -29,9 +29,12 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    @MemberLoginCheck
-    public ResponseEntity<HttpStatus> logout() {
-        signInService.logOut();
+    public ResponseEntity<HttpStatus> signOut() {
+        if (!signInService.isSignIn()) {
+            throw new RuntimeException("not signIn");
+        }
+
+        signInService.signOut();
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

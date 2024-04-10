@@ -13,31 +13,27 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class SessionSignInService {
 
+
+    private final String sessionKey = "signInMember";
     private final MemberService memberService;
     private final HttpSession httpSession;
 
 
     public void signIn(SignInRequestDto signInDto) {
         checkSignInInfo(signInDto);
-        httpSession.setAttribute("signInMember", signInDto.getId());
+        httpSession.setAttribute(sessionKey, signInDto.getId());
     }
 
 
-    public void logOut() {
-//        boolean isLogin = isLogin();
-//        if (!isLogin) {
-//            throw new IllegalStateException("로그인 되어있지 않습니다. 로그인 해주세요.");
-//        }
+    public void signOut() {
         httpSession.invalidate();
     }
 
-    public boolean isLogin() {
-        return Optional
-                .ofNullable(httpSession.getAttribute("loginMember"))
-                .isPresent();
+    public boolean isSignIn() {
+        return httpSession.getAttribute(sessionKey) != null ? true : false;
     }
 
-    private void checkSignInInfo(SignInRequestDto signInDto) {
+    private void checkSignInInfo(SignInRequestDto signInDto) throws RuntimeException{
         Member member = memberService.findById(signInDto.getId())
                 .orElseThrow(() -> new RuntimeException("not exist member!"));
 
