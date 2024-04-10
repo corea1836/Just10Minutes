@@ -1,8 +1,6 @@
 package flab.just10minutes.member.controller;
 
-import flab.just10minutes.member.domain.Member;
-import flab.just10minutes.member.dto.AddMemberRequest;
-import flab.just10minutes.member.dto.MemberInfoResponse;
+import flab.just10minutes.member.dto.AddMemberRequestDto;
 import flab.just10minutes.member.service.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +18,7 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping
-    public ResponseEntity<HttpStatus> addMember(@RequestBody @Valid AddMemberRequest addRequest) {
+    public ResponseEntity<HttpStatus> addMember(@RequestBody @Valid AddMemberRequestDto addRequest) {
         memberService.saveMember(addRequest);
         return new ResponseEntity<>(HttpStatus.OK);
     }

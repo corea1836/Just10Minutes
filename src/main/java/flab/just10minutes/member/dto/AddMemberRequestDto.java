@@ -6,7 +6,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class AddMemberRequest {
+public class AddMemberRequestDto {
 
 
     private final String id;
@@ -14,7 +14,7 @@ public class AddMemberRequest {
     private final String name;
     private final String address;
 
-    public static Member to(AddMemberRequest addMemberRequest) {
+    public static Member to(AddMemberRequestDto addMemberRequest) {
         return Member.builder()
                 .id(addMemberRequest.id)
                 .password(addMemberRequest.password)
