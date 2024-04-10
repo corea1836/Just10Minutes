@@ -25,12 +25,12 @@ public class MemberController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<MemberInfoResponse> getMemberProfile(@PathVariable String id) {
-        Member member = memberService.findMemberById(id);
-        MemberInfoResponse responseMemberInfo = MemberInfoResponse.to(member);
-        return new ResponseEntity<MemberInfoResponse>(responseMemberInfo, HttpStatus.OK);
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<MemberInfoResponse> getMemberProfile(@PathVariable String id) {
+//        Member member = memberService.findMemberById(id);
+//        MemberInfoResponse responseMemberInfo = MemberInfoResponse.to(member);
+//        return new ResponseEntity<MemberInfoResponse>(responseMemberInfo, HttpStatus.OK);
+//    }
 
 
 }
