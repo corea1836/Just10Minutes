@@ -1,7 +1,6 @@
 package flab.just10minutes.product.controller;
 
 import flab.just10minutes.aop.MemberLoginCheck;
-import flab.just10minutes.member.service.LoginService;
 import flab.just10minutes.product.dto.PurchaseDto;
 import flab.just10minutes.product.dto.PurchaseRequest;
 import flab.just10minutes.product.service.PurchaseService;

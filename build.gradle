@@ -29,6 +29,7 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	implementation 'org.apache.commons:commons-lang3:3.0'
 
 	testCompileOnly 'org.projectlombok:lombok' 
 	testAnnotationProcessor 'org.projectlombok:lombok' 
