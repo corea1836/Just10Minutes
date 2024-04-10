@@ -1,9 +1,9 @@
 package flab.just10minutes.member.controller;
 
 import flab.just10minutes.aop.MemberLoginCheck;
-import flab.just10minutes.member.dto.LoginRequest;
-import flab.just10minutes.member.service.LoginService;
+import flab.just10minutes.member.dto.SignInRequestDto;
 import flab.just10minutes.member.service.MemberService;
+import flab.just10minutes.member.service.SessionSignInService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,21 +19,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
 
-    private final LoginService loginService;
-    private final MemberService memberService;
+    private final SessionSignInService signInService;
 
-//    @PostMapping("/login")
-//    public ResponseEntity<HttpStatus> login(@RequestBody @Valid LoginRequest loginRequest) {
-//        memberService.existMemberValidate(loginRequest.getId(), loginRequest.getPassword());
-//
-//        loginService.logIn(memberService.findMemberById(loginRequest.getId()).getUniqueId());
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
+
+    @PostMapping("/login")
+    public ResponseEntity<HttpStatus> signIn(@RequestBody @Valid SignInRequestDto signInDto) {
+        signInService.signIn(signInDto);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     @PostMapping("/logout")
-    @MemberLoginCheck
-    public ResponseEntity<HttpStatus> logout() {
-        loginService.logOut();
+    public ResponseEntity<HttpStatus> signOut() {
+        if (!signInService.isSignIn()) {
+            throw new RuntimeException("not signIn");
+        }
+
+        signInService.signOut();
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

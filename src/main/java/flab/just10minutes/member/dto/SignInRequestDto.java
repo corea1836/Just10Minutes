@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Value;
 
 @Value
-public class LoginRequest {
+public class SignInRequestDto {
 
     @NotNull
     private final String id;
