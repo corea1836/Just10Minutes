@@ -1,4 +1,4 @@
-# ⏰Just10Minutes
+# ⏰Just10Minutes 
 #### Just10Minutes는 하루 한 번 10분 동안만 평소보다 🔥많이🔥  할인된 가격으로 구매 가능한 타임딜 서비스 입니다. 
 <br>
 
